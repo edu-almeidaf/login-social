@@ -3,7 +3,9 @@ package com.betrybe.sociallogin
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doOnTextChanged
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -18,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     private val passwordInputField: TextInputEditText by lazy { findViewById(R.id.password_text_input_field) }
 
     private val regexEmail = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$"
+
+    private val parentLayout: ConstraintLayout by lazy { findViewById(R.id.main) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +48,13 @@ class MainActivity : AppCompatActivity() {
         val passwordText = passwordInputField.text.toString()
 
         if (!emailText.matches(regexEmail.toRegex())) {
-            emailInput.error = "Email inválido"
+            emailInput.error = getString(R.string.email_warning)
         } else if (passwordText.length < 4) {
-            passwordInput.error = "Senha deve ter mais de 4 caracteres"
+            passwordInput.error = getString(R.string.password_warning)
         } else {
             emailInput.error = null
             passwordInput.error = null
+            Snackbar.make(parentLayout, R.string.login_succeeded, Snackbar.LENGTH_LONG).show()
         }
     }
 }
