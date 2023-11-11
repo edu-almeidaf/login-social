@@ -14,10 +14,16 @@ class MainActivity : AppCompatActivity() {
     private val loginButton: Button by lazy { findViewById(R.id.login_button) }
 
     private val emailInput: TextInputLayout by lazy { findViewById(R.id.email_text_input_layout) }
-    private val emailInputField: TextInputEditText by lazy { findViewById(R.id.email_text_input_field) }
+    private val emailInputField: TextInputEditText by lazy {
+        findViewById(R.id.email_text_input_field)
+    }
 
-    private val passwordInput: TextInputLayout by lazy { findViewById(R.id.password_text_input_layout) }
-    private val passwordInputField: TextInputEditText by lazy { findViewById(R.id.password_text_input_field) }
+    private val passwordInput: TextInputLayout by lazy {
+        findViewById(R.id.password_text_input_layout)
+    }
+    private val passwordInputField: TextInputEditText by lazy {
+        findViewById(R.id.password_text_input_field)
+    }
 
     private val regexEmail = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$"
 
@@ -31,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         loginButton.setOnClickListener { validateEmailAndPassword() }
     }
 
-    private fun enableButton () {
+    private fun enableButton() {
         loginButton.isEnabled = false
         emailInputField.doOnTextChanged { text, start, before, count -> verifyFields() }
         passwordInputField.doOnTextChanged { text, start, before, count -> verifyFields() }
