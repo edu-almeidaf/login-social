@@ -53,6 +53,7 @@
             app:startIconDrawable="@drawable/email_icon_24dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_text_input_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
@@ -69,6 +70,7 @@
             app:startIconDrawable="@drawable/password_icon_24dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_text_input_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Senha"
