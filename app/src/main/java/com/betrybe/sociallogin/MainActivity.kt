@@ -9,7 +9,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
-const val minLength = 4
+const val MINLENGTH = 4
 class MainActivity : AppCompatActivity() {
 
     private val loginButton: Button by lazy { findViewById(R.id.login_button) }
@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun enableButton() {
         loginButton.isEnabled = false
-        emailInputField.doOnTextChanged { text, start, before, count -> verifyFields() }
-        passwordInputField.doOnTextChanged { text, start, before, count -> verifyFields() }
+        emailInputField.doOnTextChanged { _, _, _, _ -> verifyFields() }
+        passwordInputField.doOnTextChanged { _, _, _, _ -> verifyFields() }
     }
 
     private fun verifyFields() {
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         if (!emailText.matches(regexEmail.toRegex())) {
             emailInput.error = getString(R.string.email_warning)
-        } else if (passwordText.length < minLength) {
+        } else if (passwordText.length < MINLENGTH) {
             passwordInput.error = getString(R.string.password_warning)
         } else {
             emailInput.error = null
