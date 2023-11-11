@@ -17,12 +17,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        loginButton.isEnabled = false
 
         enableButton()
     }
 
     private fun enableButton () {
+        loginButton.isEnabled = false
         emailInput.editText?.doOnTextChanged { text, start, before, count -> verifyFields() }
         passwordInput.editText?.doOnTextChanged { text, start, before, count -> verifyFields() }
     }
